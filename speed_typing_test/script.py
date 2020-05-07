@@ -1,4 +1,4 @@
-#Speed Typing Test - Python Project
+# Speed Typing Test - Python Project
 from time import time
 
 def typingSpeed(typed_text, start_time, end_time):
@@ -25,7 +25,7 @@ def typingErrors(given_text):
         return errors
 
         
-given_text="A quick brown fox jumped over a lazy dog."
+given_text="The quick brown fox jumps over the lazy dog is an English-language pangram—a sentence that contains all of the letters of the alphabet. It is commonly used for touch-typing practice, testing typewriters and computerkeyboards, displaying examples of fonts, and other applications involving text where the use of all letters in the alphabet is desired. Owing to its brevity and coherence, it has become widely known. In the age of computers, this pangram is commonly used to display font samples and for testing computer keyboards. In cryptography, it is commonly used as a test vector for hash and encryption algorithms to verify their implementation, as well as to ensure alphabetic character set compatibility."
                 
 print("Speed Typing Test")
 print("Type this - :")
@@ -46,3 +46,5 @@ speed = round(typingSpeed(typed_text, start_time, end_time),2)
 errors = typingErrors(given_text)
 
 print("You took",time,"seconds with an Average Speed of",speed,"words per minute with",errors,"errors.")
+
+input()

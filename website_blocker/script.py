@@ -1,4 +1,4 @@
-#Website Blocker - Python Project
+# Website Blocker - Python Project
 
 import time
 from datetime import datetime as dt
