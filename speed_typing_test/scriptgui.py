@@ -2,60 +2,54 @@
 from time import time
 from tkinter import *
 
-global start_time
-start_time = time()
 root = Tk()
 root.geometry('800x600')
 root.title("Speed Typing Test")
 frame = Frame(root)
-entryResult = Entry(frame)
 
+given_text = "Rutters Plate Fleet boom chandler Brethren of the Coast handsomely lookout marooned brigantine knave. Buccaneer gangway jack rum loot spyglass line Jack Tar fore gaff. Gaff topmast scuttle ballast swab draught measured fer yer chains dance the hempen jig Chain Shot yardarm."
 
-def typingSpeed(typed_text, start_time):
-    global finaltime
-    global words
-    # global speed
+def start():
+    global start_time
+    start_time = time()
+
+def end():
     end_time = time()
     time_taken = end_time - start_time
-    finaltime = round(time_taken, 2)
+    final_time = round(time_taken,2)
+    typed_text = entrySubmitText.get("1.0", "end")
     words = typed_text.split()
     wordlen = len(words)
-    res = wordlen / (finaltime / 60)
-    entryResult.delete(0, END)
-    entryResult.insert(0, res)
-    return
-
-
-def typingErrors(given_text):
-    global given_words
+    res = wordlen / (time_taken / 60)
+    speed = round(res,2)
     given_words = given_text.split()
-    errors = 0
-    for i in range(len(words)):
+    givenwordlen = len(given_words)
+    errors = abs(givenwordlen - wordlen)
+    
+    for i in range(len(given_words)):
         if words[i] == given_words[i]:
             continue
         else:
             errors += 1
-    return errors
-
-
-given_text = "Rutters Plate Fleet boom chandler Brethren of the Coast handsomely lookout marooned brigantine knave. Buccaneer gangway jack rum loot spyglass line Jack Tar fore gaff. Gaff topmast scuttle ballast swab draught measured fer yer chains dance the hempen jig Chain Shot yardarm."
+            
+    text = "You took "+str(final_time)+" seconds with an Average Speed of "+str(speed)+" words per minute with "+str(errors)+" errors."
+    entryResult.insert("1.0",text)
 
 labeltop = Label(frame, text="Type the following text", font=('Arial Bold', 12))
 entryGivenText = Text(frame, width=60, height=10)
 entrySubmitText = Text(frame, width=60, height=10)
-typed_text = entrySubmitText.get("1.0", "end")
-submitBtn = Button(frame, text="Submit", command=typingSpeed(typed_text, start_time))
+entryResult = Text(frame, width=60, height=2)
 
 frame.pack()
 labeltop.grid(row=0, columnspan=3)
 entryGivenText.grid(row=1)
 entryGivenText.insert(1.0, given_text)
 entryGivenText.configure(state='disabled')
-entrySubmitText.grid(row=2, pady=10)
-submitBtn.grid(row=3, padx=20)
-entryResult.grid(row=4, pady=15)
+startBtn = Button(frame, text="Start", command=start)
+submitBtn = Button(frame, text="Submit", command=end)
+startBtn.grid(row=2, padx=20)
+entrySubmitText.grid(row=3, pady=10)
+submitBtn.grid(row=4, padx=20)
+entryResult.grid(row=5, pady=20)
 
-# errors = typingErrors(given_text)
-
-# print("You took",time,"seconds with an Average Speed of",speed,"words per minute with",errors,"errors.")
 root.mainloop()
