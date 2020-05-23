@@ -7,11 +7,11 @@ b = 1
 
 print ("Fibonacci Series with",n,"elements -: ")
 print (a,end="")
-print (","+str(b),end="")
+print (", "+str(b),end="")
 
 while n>2:
     c=a+b
     a=b
     b=c
-    print (","+str(c),end="")
+    print (", "+str(c), end="")
     n-=1
