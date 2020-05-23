@@ -10,4 +10,9 @@ while choice:
     c = input("Do you want to roll the dice again. (Y/N) = ")
     if c=='N' or c=='n':
         choice = False
+    elif c=='Y' or c=='y':
+        choice = True
+    else:
+        print("Please enter a valid choice")
+        choice = False
 
