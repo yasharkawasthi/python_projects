@@ -5,8 +5,8 @@ from plyer import notification
 
 while True:
     notification.notify(
-        title = "Please drink water now!",
-        message = "The Institute of Medicine (IOM) recommends a total of 13 cups (about 3 liters) of fluid each day.",
+        title = "Please pure drink water now!",
+        message = "The Institute of Medicine (IOM) recommends a total of 13 cups (about 3 liters) of fluid each day for good health.",
         app_icon = "water.ico",
         timeout = 15    # Displays notification for 15 seconds
     )
