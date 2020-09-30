@@ -1,5 +1,5 @@
 # Desktop Notification System - Reminder for Drinking Water 
-
+#improved code by divyansh
 import time
 from plyer import notification
 
