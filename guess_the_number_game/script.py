@@ -10,7 +10,7 @@ flag = 0
 n = int(input("Guess the randomly generated number = "))
 while chances>0:
     if n==num:
-        print ("You guessed the number.")
+        print ("You have guessed the number.")
         flag=1
         break
     elif n>100 or n<0:
@@ -22,7 +22,7 @@ while chances>0:
     elif abs(n-num)>=5:
         print ("Nearby")
     elif abs(n-num)<5:
-        print("You're too close!")
+        print("You're very close!")
     chances-=1
     n = int(input("Guess again = "))
 
