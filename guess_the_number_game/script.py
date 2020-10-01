@@ -2,10 +2,10 @@
 
 import random as rm
 
-num = rm.randint(0,100)
-#print(num)
+num = rm.randint(0, 100)
 chances = 4
 flag = 0
+
 #Adding exceptional handling feature to prevent the program from terminating if input value is non numeric
 try:
     while chances>0:
@@ -36,3 +36,4 @@ except KeyWordInterrupt:
         print("Congratulations, you won! You guessed it with",chances,"chances left.")
     else:
         print("You lost.")
+
