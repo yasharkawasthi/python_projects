@@ -6,12 +6,12 @@ num = rm.randint(0,100)
 #print(num)
 chances = 4
 flag = 0
-#Adding exceptional handling to prevent the program from terminating if input value is non numeric
+#Adding exceptional handling feature to prevent the program from terminating if input value is non numeric
 try:
     while chances>0:
         try:
             n = int(input('Enter your guess'))
-        except:
+        except ValueError:
             print("Sorry,this is not a numerical value , try again :( ")
             continue
         if n==num:
