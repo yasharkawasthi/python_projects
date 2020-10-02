@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter.ttk import *
-import pyperclip
-import random
+import random as rm
 import string
 
 root = Tk()
@@ -9,32 +8,50 @@ root.geometry('400x200')
 root.title("Guess the Number")
 frame = Frame(root)
 
-lengthSelect = IntVar()
-choice = IntVar()
+num = rm.randint(0, 100)
+chances = 4
+flag = 0
 
 
-def strong():
-    entryPass.delete(0, END)
-    length = lengthSelect.get()
-    password = string.ascii_letters + string.digits + "!@#$&*"
-    return ''.join((random.choice(password) for i in range(length)))
+def checkNumber():
+    try:
+        while chances > 0:
+            try:
+                n = entryPass.get("1.0", 'end-1c')
+            except ValueError:
+                labelGuess.insert(
+                    10, "Sorry,this is not a numerical value , try again :( ")
+                continue
+            if n == num:
+                print("You have guessed the number.")
+                flag = 1
+                break
+            elif n > 100 or n < 0:
+                print("Invalid")
+            elif n-num > 10:
+                print("Too high")
+            elif num-n > 10:
+                print("Too low")
+            elif abs(n-num) >= 5:
+                print("Nearby")
+            elif abs(n-num) < 5:
+                print("You're very close!")
+                chances -= 1
+                n = int(input("Guess again = "))
 
-
-def generatePass():
-    generatedPass = strong()
-    entryPass.insert(10, generatedPass)
-
-
-def copypass():
-    temp = entryPass.get()
-    pyperclip.copy(temp)
+    except KeyboardInterrupt:
+        if flag == 1:
+            print("Congratulations, you won! You guessed it with",
+                  chances, "chances left.")
+        else:
+            print("You lost.")
 
 
 labelwelcome = Label(frame, text="Make your guess", font=('Arial Bold', 12))
 labelPass = Label(frame, text="Your Guess")
 entryPass = Entry(frame)
-generateBtn = Button(frame, text="Check", command=generatePass)
-labelGuess = Label(frame, text="asdnjknjk", font=('Arial', 10))
+generateBtn = Button(frame, text="Check", command=checkNumber)
+labelGuess = Label(frame, text="", font=('Arial', 10))
 labelmsg = Label(root, text="Developed by Shahnawaz & Yashark", relief=SUNKEN)
 
 frame.pack()
