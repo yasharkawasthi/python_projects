@@ -9,15 +9,15 @@ root.title("Guess the Number")
 frame = Frame(root)
 
 num = rm.randint(0, 100)
-chances = 4
 flag = 0
 
 
 def checkNumber():
+    chances = 4
     try:
         while chances > 0:
             try:
-                n = entryPass.get("1.0", 'end-1c')
+                n = entryPass.get("1.0")
             except ValueError:
                 labelGuess.insert(
                     10, "Sorry,this is not a numerical value , try again :( ")
@@ -48,7 +48,7 @@ def checkNumber():
 
 
 labelwelcome = Label(frame, text="Make your guess", font=('Arial Bold', 12))
-labelPass = Label(frame, text="Your Guess")
+labelPass = Label(frame, text="Enter your guess")
 entryPass = Entry(frame)
 generateBtn = Button(frame, text="Check", command=checkNumber)
 labelGuess = Label(frame, text="", font=('Arial', 10))
